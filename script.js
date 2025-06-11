@@ -1,24 +1,57 @@
-let judul = document.getElementById("judul");
-judul.style.color = "red";
-judul.style.backgroundColor = "#ccc";
-judul.innerHTML = "Yogi Suryatmika";
+const tUbahWarna = document.getElementById("tUbahWarna");
+tUbahWarna.addEventListener("click", function (e) {
+  document.body.classList.toggle("biru-muda");
+});
 
-const p = document.getElementsByTagName("p");
-for (let i = 0; i < p.length; i++) {
-  p[i].style.backgroundColor = "lightblue";
-}
+const tAcakWarna = document.createElement("button");
+const teksTombol = document.createTextNode("Acak Warna");
+tAcakWarna.appendChild(teksTombol);
+tAcakWarna.setAttribute("type", "button");
 
-// class
-const p1 = document.getElementsByClassName("p1");
-p1[0].innerHTML = "ini diubah dari javascript";
+tUbahWarna.after(tAcakWarna);
 
-// querySelector
-const p4 = document.querySelector("#b p");
-p4.style.color = "green";
-p4.style.fontSize = "30px";
+tAcakWarna.addEventListener("click", function () {
+  const r = Math.round(Math.random() * 255 + 1);
+  const g = Math.round(Math.random() * 255 + 1);
+  const b = Math.round(Math.random() * 255 + 1);
+  document.body.style.backgroundColor =
+    "rgb(" + r + "  , " + g + ", " + b + ")";
+});
 
-const li2 = document.querySelector(
-  "section#b ul li:nth-child(2)"
-);
+const sMerah = document.querySelector("input[name=sMerah]");
+sMerah.addEventListener("input", function (e) {
+  const r = sMerah.value;
+  const g = sHijau.value;
+  const b = sBiru.value;
+  document.body.style.backgroundColor =
+    "rgb(" + r + "," + g + "," + b + ")";
+});
 
-li2.style.backgroundColor = "orange";
+const sHijau = document.querySelector("input[name=sHijau]");
+sHijau.addEventListener("input", function (e) {
+  const r = sMerah.value;
+  const g = sHijau.value;
+  const b = sBiru.value;
+  document.body.style.backgroundColor =
+    "rgb(" + r + "," + g + "," + b + ")";
+});
+
+const sBiru = document.querySelector("input[name=sBiru]");
+sBiru.addEventListener("input", function (e) {
+  const r = sMerah.value;
+  const g = sHijau.value;
+  const b = sBiru.value;
+  document.body.style.backgroundColor =
+    "rgb(" + r + "," + g + "," + b + ")";
+});
+
+document.body.addEventListener("mousemove", function (e) {
+  const xPos = Math.round(
+    (e.clientX / window.innerWidth) * 255
+  );
+  const yPos = Math.round(
+    (e.clientY / window.innerHeight) * 255
+  );
+  document.body.style.backgroundColor =
+    "rgb(" + xPos + "," + yPos + ", 100 )";
+});
